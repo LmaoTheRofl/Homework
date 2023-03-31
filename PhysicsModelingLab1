@@ -166,7 +166,6 @@ for mu, result in results.items():
             GreenBall.iteration(dt)
             
 
-#Graph
 color1 = 'white'
 color2 = 'black'
 color0 = color2
@@ -207,9 +206,20 @@ colors = {
 for mu, segments in _results.items():
     lbl = 'mu = ' + str(mu)
     for segment in segments:
-        plt.plot([angle * 180 / math.pi for angle in list(segment.keys())], list(segment.values()), color=colors[mu],
-                 label=lbl)
+        plt.plot([angle * 180 / math.pi for angle in list(segment.keys())], list(segment.values()), color=colors[mu], label=lbl)
         lbl = ''
+# Нахождение точек перегиба
+dy_dx = np.gradient( list(results[mu2].values()),[angle * 180 / math.pi for angle in list(results[mu2].keys())]) 
+d2y_dx2 = np.gradient(dy_dx, [angle * 180 / math.pi for angle in list(results[mu2].keys())])  
+
+inflection_points = []
+
+for i in range(len([angle * 180 / math.pi for angle in list(results[mu2].keys())]) - 1):
+    if d2y_dx2[i] * d2y_dx2[i+1] < 0:  
+        inflection_points.append(([angle * 180 / math.pi for angle in list(results[mu2].keys())][i],  list(results[mu2].values())[i]))
+print("Точки перегиба на графике:")
+for point in inflection_points:
+    print(f"x={point[0]:.2f}, y={point[1]:.2f}")
 plt.legend()
 plt.grid(True)
 plt.savefig('graph.png')
