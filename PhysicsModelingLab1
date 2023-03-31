@@ -165,7 +165,6 @@ for mu, result in results.items():
             RedBall.iteration(dt)
             GreenBall.iteration(dt)
             
-   # results[mu] = {angle:energy for angle, energy in result.items()if energy != -1}
 
 #Graph
 color1 = 'white'
