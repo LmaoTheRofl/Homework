@@ -111,7 +111,7 @@ for mu, result in results.items():
         RedBall = Ball(Coordinates(x1, y1),Coordinates(V0*math.cos(i), V0*math.sin(i)),Coordinates(-mu*9.80665*math.cos(i), -mu*9.80665*math.sin(i)), m, r)
         GreenBall = Ball(Coordinates(x2, y2), Coordinates(0, 0), Coordinates(0, 0), m, r)
         Hole = Ball(Coordinates(x0, y0), None, None, 0, R)
-        for t in np.linspace(0, 10, 2000):
+        for t in np.linspace(0, 10, 10000):
             if RedBall.isCollision(GreenBall):
                 d = 0
                 x = 0
