@@ -105,7 +105,7 @@ results = {
     mu2 : dict(zip(np.linspace(0, 2*np.pi, 360).tolist(), [-1]*360)),
     mu3 : dict(zip(np.linspace(0, 2*np.pi, 360).tolist(), [-1]*360))
 }
-dt = 10.0/2000
+dt = 0.001
 for mu, result in results.items():
     for i in result.keys():
         RedBall = Ball(Coordinates(x1, y1),Coordinates(V0*math.cos(i), V0*math.sin(i)),Coordinates(-mu*9.80665*math.cos(i), -mu*9.80665*math.sin(i)), m, r)
