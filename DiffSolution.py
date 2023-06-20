@@ -1,34 +1,31 @@
-import math as mt
-import numpy as np
 import matplotlib.pyplot as plt
 
 In = open('input.txt', 'r')
-X = float(In.readline())
+x = float(In.readline())
 h = float(In.readline())
 In.close()
 
 def ydev(x, y):
     return ((1/(x**2 + x + 1)) - (y/(x+0.5)))
 
-# Приближенное решение с шагом h:
 xn = 0
 yn = 4
 xdots = []
 ydots = []
 xdots.append(xn)
 ydots.append(yn)
-def rungekutta(xn, yn, h):
+def runge(xn, yn, h):
     k1 = ydev(xn, yn)
     k2 = ydev(xn + h/2, yn + k1*h/2)
     k3 = ydev(xn + h/2, yn + k2*h/2)
     k4 = ydev(xn + h, yn + k3*h)
     return yn + h*(k1 + 2 * k2 + 2 * k3 + k4)/6
-while (xn < X):
-    yn = rungekutta(xn, yn, h)
+while (xn < x):
+    yn = runge(xn, yn, h)
     xn = xn + h
     ydots.append(yn)
     xdots.append(xn)
-plt.plot(xdots, ydots)
+plt.plot(xdots, ydots, label='h=' + str(h))
 plt.legend()
 plt.xlabel("x")
 plt.ylabel("y")
@@ -42,7 +39,6 @@ Out.write("--------------------------" + '\n')
 for i in range (xlen):
     Out.write(str(xdots[i]) + '\t' + "|" + '\t' + str(ydots[i]) + '\n')
 
-# Приближенное решение с шагом h/10:
 h = h/10
 xn = 0
 yn = 4
@@ -50,18 +46,18 @@ xdots2 = []
 ydots2 = []
 xdots2.append(xn)
 ydots2.append(yn)
-def rungekutta(xn, yn, h):
+def runge(xn, yn, h):
     k1 = ydev(xn, yn)
     k2 = ydev(xn + h/2, yn + k1*h/2)
     k3 = ydev(xn + h/2, yn + k2*h/2)
     k4 = ydev(xn + h, yn + k3*h)
     return yn + h*(k1 + 2 * k2 + 2 * k3 + k4)/6
-while (xn < X):
-    yn = rungekutta(xn, yn, h)
+while (xn < x):
+    yn = runge(xn, yn, h)
     xn = round(xn + h, 4)
     ydots2.append(yn)
     xdots2.append(xn)
-plt.plot(xdots2, ydots2)
+plt.plot(xdots2, ydots2, label='h=' + str(h))
 plt.legend()
 plt.xlabel("x")
 plt.ylabel("y")
