@@ -9,7 +9,7 @@ def ydev(x, y):
     return ((1/(x**2 + x + 1)) - (y/(x+0.5)))
 
 xn = 0
-yn = 4
+yn = 1
 xdots = []
 ydots = []
 xdots.append(xn)
@@ -41,7 +41,7 @@ for i in range (xlen):
 
 h = h/10
 xn = 0
-yn = 4
+yn = 1
 xdots2 = []
 ydots2 = []
 xdots2.append(xn)
