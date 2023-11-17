@@ -1,0 +1,8 @@
+Approximate solution with a step h
+x	|	y
+--------------------------
+1	|	0.6666666666666666
+Approximate solution with a step h/10
+x	|	y
+--------------------------
+1	|	0.6666666666666666
