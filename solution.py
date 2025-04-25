@@ -1,4 +1,3 @@
-#NikitaZharkovO3144
 with open("input.txt", "r") as input_file:
     h = input_file.readlines()
     n =  int(h[0].replace('\n', ''))
